@@ -1,0 +1,13 @@
+{
+    "name": "StockReturn",
+    "alias": "stockreturn",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\StockReturn\\Providers\\StockReturnServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}

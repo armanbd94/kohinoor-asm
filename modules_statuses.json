@@ -1,0 +1,16 @@
+{
+    "Location": true,
+    "Customer": true,
+    "SalesMen": true,
+    "Product": true,
+    "Stock": true,
+    "Account": true,
+    "Transfer": true,
+    "Sale": true,
+    "Expense": true,
+    "Report": true,
+    "Bank": true,
+    "MobileBank": true,
+    "StockReturn": true,
+    "DamageReportController": true
+}
