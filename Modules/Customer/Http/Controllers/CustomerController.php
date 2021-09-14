@@ -234,6 +234,16 @@ class CustomerController extends BaseController
         }
     }
 
+    public function show(Request $request)
+    {
+        if($request->ajax()){
+            if(permission('customer-view')){
+                $customer   = $this->model->with(['customer_group','district','upazila','route','area'])->findOrFail($request->id);
+                return view('customer::view-data',compact('customer'))->render();
+            }
+        }
+    }
+
 
     public function edit(Request $request)
     {
@@ -284,7 +294,7 @@ class CustomerController extends BaseController
     public function change_status(Request $request)
     {
         if($request->ajax()){
-            if(permission('material-edit')){
+            if(permission('customer-edit')){
                 $result   = $this->model->find($request->id)->update(['status' => $request->status]);
                 $output   = $result ? ['status' => 'success','message' => 'Status Has Been Changed Successfully']
                 : ['status' => 'error','message' => 'Failed To Change Status'];
