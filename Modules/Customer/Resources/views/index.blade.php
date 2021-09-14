@@ -124,6 +124,7 @@
     </div>
 </div>
 @include('customer::customer-form-modal')
+@include('customer::view')
 @endsection
 
 @push('scripts')
@@ -342,6 +343,28 @@ $(document).ready(function(){
                         $('#store_or_update_modal #save-btn').text('Update');
                     }
                     
+                },
+                error: function (xhr, ajaxOption, thrownError) {
+                    console.log(thrownError + '\r\n' + xhr.statusText + '\r\n' + xhr.responseText);
+                }
+            });
+        }
+    });
+  
+  $(document).on('click', '.view_data', function () {
+        let id = $(this).data('id');
+        if (id) {
+            $.ajax({
+                url: "{{route('customer.view')}}",
+                type: "POST",
+                data: { id: id,_token: _token},
+                success: function (data) {
+                    $('#view_modal #view-data').html('');
+                    $('#view_modal #view-data').html(data);
+                    $('#view_modal').modal({
+                        keyboard: false,
+                        backdrop: 'static',
+                    });
                 },
                 error: function (xhr, ajaxOption, thrownError) {
                     console.log(thrownError + '\r\n' + xhr.statusText + '\r\n' + xhr.responseText);
