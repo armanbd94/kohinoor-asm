@@ -12,7 +12,7 @@ use Modules\Account\Http\Requests\CashAdjustmentFormRequest;
 
 class CashAdjustmentController extends BaseController
 {
-    protected const VOUCHER_PREFIX = 'ADJUSTMENT';
+    protected const VOUCHER_PREFIX = 'CHV';
     public function __construct(CashAdjustment $model)
     {
         $this->model = $model;
