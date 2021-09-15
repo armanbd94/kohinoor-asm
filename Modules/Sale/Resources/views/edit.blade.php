@@ -6,12 +6,6 @@
 <link rel="stylesheet" href="css/jquery-ui.css" />
 <link href="css/bootstrap-datetimepicker.min.css" rel="stylesheet" type="text/css" />
 <style>
-    .small-btn{
-        width: 20px !important;
-        height: 20px !important;
-        padding: 0 !important;
-    }
-    .small-btn i{font-size: 10px !important;}
     .customer.table td{
         vertical-align: top !important;
         padding: 0 !important;
@@ -99,6 +93,7 @@
                                         <th class="text-right">Net Sale Unit Price</th>
                                         <th class="text-right">Tax</th>
                                         <th class="text-right">Subtotal</th>
+                                        <th class="text-center"><i class="fas fa-trash text-white"></i></th>
                                     </thead>
                                     <tbody>
                                         @php
@@ -168,7 +163,7 @@
                                                 <td class="text-right">{{ $product_price }}</td>
                                                 <td class="tax text-right">{{ number_format((float)$sale_product->pivot->tax, 2, '.','') }}</td>
                                                 <td class="sub-total text-right">{{ number_format((float)$sale_product->pivot->total, 2, '.','') }}</td>
-
+                                                <td class="text-center"><button type="button" class="btn btn-danger btn-md remove-product"><i class="fas fa-trash"></i></button></td>
                                                 <input type="hidden" class="product-id" name="products[{{ $key + 1 }}][id]"  value="{{ $sale_product->pivot->product_id }}">
                                                 <input type="hidden" class="product-code" name="products[{{ $key + 1 }}][code]" value="{{ $sale_product->code }}" data-row="{{ $key + 1 }}">
                                                 <input type="hidden" class="batch-no" name="products[{{ $key + 1 }}][batch_no]" id="products_{{ $key + 1 }}_batch_no" value="{{ $sale_product->pivot->batch_no }}">
@@ -196,6 +191,7 @@
                                         <th></th>
                                         <th id="total-tax" class="text-right font-weight-bolder">{{ number_format($sale->total_tax,2,'.','') }}</th>
                                         <th id="total" class="text-right font-weight-bolder">{{ number_format($sale->total_price,2,'.','') }}</th>
+                                        <th></th>
                                     </tfoot>
                                 </table>
                             </div>
@@ -505,7 +501,7 @@ $(document).ready(function () {
                     cols += `<td class="text-right">${data.price}</td>`;
                     cols += `<td class="tax text-right"></td>`;
                     cols += `<td class="sub-total text-right"></td>`;
-
+                    cols += `<td class="text-center"><button type="button" class="btn btn-danger btn-md remove-product"><i class="fas fa-trash"></i></button></td>`;
                     cols += `<input type="hidden" class="product-id" name="products[${count}][id]"  value="${data.id}">`;
                     cols += `<input type="hidden" class="product-code" name="products[${count}][code]" value="${data.code}" data-row="${count}">`;
                     cols += `<input type="hidden" class="batch-no" name="products[${count}][batch_no]" id="products_${count}_batch_no" value="${data.batch_no}">`;

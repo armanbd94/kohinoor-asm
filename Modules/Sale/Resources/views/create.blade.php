@@ -6,12 +6,6 @@
 <link rel="stylesheet" href="css/jquery-ui.css" />
 <link href="css/bootstrap-datetimepicker.min.css" rel="stylesheet" type="text/css" />
 <style>
-    .small-btn{
-        width: 20px !important;
-        height: 20px !important;
-        padding: 0 !important;
-    }
-    .small-btn i{font-size: 10px !important;}
     .customer.table td{
         vertical-align: top !important;
         padding: 0 !important;
@@ -110,6 +104,7 @@
                                         <th class="text-right">Net Sale Unit Price</th>
                                         <th class="text-right">Tax</th>
                                         <th class="text-right">Subtotal</th>
+                                        <th class="text-center"><i class="fas fa-trash text-white"></i></th>
                                     </thead>
                                     <tbody>
                                     </tbody>
@@ -119,6 +114,7 @@
                                         <th></th>
                                         <th id="total-tax" class="text-right font-weight-bolder">0.00</th>
                                         <th id="total" class="text-right font-weight-bolder">0.00</th>
+                                        <th></th>
                                     </tfoot>
                                 </table>
                             </div>
@@ -377,7 +373,7 @@ $(document).ready(function () {
                     cols += `<td class="text-right">${data.price}</td>`;
                     cols += `<td class="tax text-right"></td>`;
                     cols += `<td class="sub-total text-right"></td>`;
-
+                    cols += `<td class="text-center"><button type="button" class="btn btn-danger btn-md remove-product"><i class="fas fa-trash"></i></button></td>`;
                     cols += `<input type="hidden" class="product-id" name="products[${count}][id]"  value="${data.id}">`;
                     cols += `<input type="hidden" class="product-code" name="products[${count}][code]" value="${data.code}" data-row="${count}">`;
                     cols += `<input type="hidden" class="batch-no" name="products[${count}][batch_no]" id="products_${count}_batch_no" value="${data.batch_no}">`;
