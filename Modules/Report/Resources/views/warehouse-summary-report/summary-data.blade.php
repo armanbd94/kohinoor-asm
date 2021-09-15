@@ -161,7 +161,7 @@
             @if($coupon_data)
             <h5>{{ trans_choice('file.piece', $coupon_data->total_coupon_received, ['value' => $coupon_data->total_coupon_received]) }}</h5>
             @else
-            <h5>{{ trans_choice('file.piece', 0, ['value' => 0]) }}</h5>
+            <h5>0 Piece</h5>
             @endif
         </div>
     </div>
