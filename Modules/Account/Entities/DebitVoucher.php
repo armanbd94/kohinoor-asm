@@ -3,6 +3,7 @@
 namespace Modules\Account\Entities;
 
 use App\Models\BaseModel;
+use App\Models\Warehouse;
 use Illuminate\Support\Facades\DB;
 use Modules\Account\Entities\ChartOfAccount;
 

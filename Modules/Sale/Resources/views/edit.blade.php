@@ -159,7 +159,7 @@
                                                 <td class="text-center">{{ $sale_product->pivot->batch_no }}</td>
                                                 <td class="unit-name text-center"></td>
                                                 <td class="text-center">{{ $stock_qty }}</td>
-                                                <td><input type="text" class="form-control qty text-center" name="products[{{ $key + 1 }}][qty]" id="products_{{ $key + 1 }}_qty" value="{{ number_format($sale_product->pivot->qty,2,'.'.'') }}"></td>
+                                                <td><input type="text" class="form-control qty text-center" name="products[{{ $key + 1 }}][qty]" id="products_{{ $key + 1 }}_qty" value="{{ number_format($sale_product->pivot->qty,2,'.','') }}"></td>
                                                 <td class="text-right">{{ $product_price }}</td>
                                                 <td class="tax text-right">{{ number_format((float)$sale_product->pivot->tax, 2, '.','') }}</td>
                                                 <td class="sub-total text-right">{{ number_format((float)$sale_product->pivot->total, 2, '.','') }}</td>

@@ -518,48 +518,7 @@
                                         <td><b>AMOUNT (TK) IN WORD:</b> {{ numberTowords($sale->net_total) }}</td>
                                     </tr>
                                 </table>
-                                @if (!$due_invoices->isEmpty())
-                                <table border="0" cellspacing="0" cellpadding="0">
-                                    <thead>
-                                        <tr>
-                                            <th class="text-center">ISSUE DATE</th>
-                                            <th class="text-center">INVOICE NO</th>
-                                            <th class="text-right">NET AMOUNT</th>
-                                            <th class="text-right">PAID AMOUNT</th>
-                                            <th class="text-right">DUE AMOUNT</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @php
-                                            $total_net_amount = 0;
-                                            $total_paid_amount = 0;
-                                            $total_due_amount = 0;
-                                        @endphp
-                                        @foreach ($due_invoices as $key => $item)
-                                        <tr>
-                                            <td class="text-center">{{ date('j-F-Y',strtotime($item->sale_date)) }}</td>
-                                            <td class="text-center">{{ $item->memo_no }}</td>
-                                            <td class="text-right">{{ number_format($item->grand_total,2,'.','') }}</td>
-                                            <td class="text-right">{{ number_format($item->paid_amount,2,'.','') }}</td>
-                                            <td class="text-right">{{ number_format($item->due_total,2,'.','') }}</td>
-                                        </tr>
-                                            @php
-                                                $total_net_amount += $item->grand_total;
-                                                $total_paid_amount += $item->paid_amount;
-                                                $total_due_amount += $item->due_total;
-                                            @endphp
-                                        @endforeach
-                                    </tbody>
-                                    <tfoot>
-                                        <tr>
-                                            <th colspan="2" class="text-right">Total</th>
-                                            <th class="text-right">{{ number_format($total_net_amount,2,'.','') }}</th>
-                                            <th class="text-right">{{ number_format($total_paid_amount,2,'.','') }}</th>
-                                            <th class="text-right">{{ number_format($total_due_amount,2,'.','') }}</th>
-                                        </tr>
-                                    </tfoot>
-                                </table>
-                                @endif
+                                
                                 <table style="width: 100%;">
                                     <tr>
                                         <td class="text-center">

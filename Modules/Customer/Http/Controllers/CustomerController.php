@@ -233,8 +233,8 @@ class CustomerController extends BaseController
             ]);
         }
     }
-
-    public function show(Request $request)
+	
+  public function show(Request $request)
     {
         if($request->ajax()){
             if(permission('customer-view')){
@@ -243,7 +243,6 @@ class CustomerController extends BaseController
             }
         }
     }
-
 
     public function edit(Request $request)
     {

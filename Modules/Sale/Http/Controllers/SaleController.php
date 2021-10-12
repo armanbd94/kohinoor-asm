@@ -90,7 +90,7 @@ class SaleController extends BaseController
                     if (permission('sale-view')) {
                         $action .= ' <a class="dropdown-item view_data" href="'.route("sale.show",$value->id).'">'.self::ACTION_BUTTON['View'].'</a>';
                     }
-                    if($value->document)
+ 					if($value->document)
                     {
                         $action .= '<a class="dropdown-item" href="'.asset('storage/'.SALE_DOCUMENT_PATH.$value->document).'" download><i class="fas fa-download mr-2"></i> Document</a>';
                     }
@@ -429,8 +429,7 @@ class SaleController extends BaseController
         if(permission('sale-view')){
             $this->setPageData('Sale Details','Sale Details','fas fa-file',[['name'=>'Sale','link' => route('sale')],['name' => 'Sale Details']]);
             $sale = $this->model->with('sale_products','customer','salesmen')->find($id);
-            $due_invoices = $this->model->where([['customer_id',$sale->customer_id],['payment_status','<>',1],['id','<',$sale->id]])->get();
-            return view('sale::details',compact('sale','due_invoices'));
+            return view('sale::details',compact('sale'));
         }else{
             return $this->access_blocked();
         }
@@ -638,10 +637,10 @@ class SaleController extends BaseController
                                 $warehouse_product->qty += $sold_qty;
                                 $warehouse_product->update();
                             }
-                            SaleProduct::where('sale_id',$request->sale_id)->delete();
+                            
                             
                         }
-                        
+                        SaleProduct::where('sale_id',$saleData->id)->delete();
                     }
                     Transaction::where(['voucher_no'=>$saleData->memo_no,'voucher_type'=>'INVOICE'])->delete();
     

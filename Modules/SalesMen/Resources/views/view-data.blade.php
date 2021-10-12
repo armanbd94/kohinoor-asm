@@ -13,7 +13,7 @@
                 
                 <tr>
                     <td><b>NID No.</b></td><td><b>:</b></td><td>{{  $salesmen->nid_no  }}</td>
-                    <td><b>Monthly Target Value</b></td><td><b>:</b></td><td>{{  number_format($salesmen->monthly_target_value,2,'.','')  }}</td>
+                    <td><b>Monthly Target Value</b></td><td><b>:</b></td><td>{{  number_format($salesmen->monthly_target_value,2,'.','')  }} Tk</td>
                 </tr>
                 <tr>
                     <td><b>Upazila</b></td><td><b>:</b></td><td>{{  $salesmen->upazila->name  }}</td>
